@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= Mini Message Board
+  
+  ul
+    li
+      strong #{message.user}:  #{message.text}
+  {#{message.added.toLocaleString()}}
