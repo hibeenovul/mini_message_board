@@ -1,9 +1,24 @@
-extends layout
+pug
+doctype html
+html
+  head
+    title= title
+  body
+    h1= title
+    ul
+      each message in messages
+        li
+          strong= message.user
+          |  said: 
+          |  #{message.text}
+          |  on #{message.added ? message.added.toLocaleString() : new Date().toLocaleString()}
+    form(action="/new", method="post")
+      div
+        label(for="messageUser") Name:
+        input(type="text", id="messageUser", name="messageUser")
+      div
+        label(for="messageText") Message:
+        input(type="text", id="messageText", name="messageText")
+      div
+        button(type="submit") Submit
 
-block content
-  h1= Mini Message Board
-  
-  ul
-    li
-      strong #{message.user}:  #{message.text}
-  {#{message.added.toLocaleString()}}
