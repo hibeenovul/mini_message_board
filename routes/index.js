@@ -21,13 +21,11 @@ router.get('/', function(req, res, next) {
 router.post('/new', function(req, res) {
   const messageUser = req.body.messageUser;
   const messageText = req.body.messageText;
-  console.log(`New message from ${messageUser}: ${messageText}`);
   messages.push({
     user: messageUser,
     text: messageText,
     added: new Date()
   });
-  console.log(`Current messages:`, messages);
   res.redirect('/');
 });
 

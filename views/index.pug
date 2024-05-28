@@ -3,9 +3,10 @@ doctype html
 html
   head
     title= title
+    script(src="app/public/javascripts/main.js")
   body
     h1= title
-    ul
+    ul#message-clear
       each message in messages
         li
           strong= message.user
@@ -15,10 +16,13 @@ html
     form(action="/new", method="post")
       div
         label(for="messageUser") Name:
-        input(type="text", id="messageUser", name="messageUser")
+        input(type="text", id="messageUser", name="messageUser" required) 
       div
         label(for="messageText") Message:
-        input(type="text", id="messageText", name="messageText")
+        textarea(name="messageText" required)
       div
         button(type="submit") Submit
+      div
+        button(type="button"   onclick="clearMessagesAndForm()") Clear
+
 
